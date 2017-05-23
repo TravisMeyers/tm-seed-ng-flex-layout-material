@@ -1,0 +1,37 @@
+<header fxLayout="row" fxFlex="0 0 auto" fxLayoutAlign="center center" fxLayoutGap="15px">
+  <img fxFlex="0 0 auto" i18n-title="App logo title" title="Acme" src="assets/images/acme-logo-yellow.svg" (click)="hideAside = !hideAside" />
+  <nav fxFlex="2 2 auto">
+    <ul class="horizontal">
+      <li *ngFor="let menuItem of primaryMenuItems; let idx = index">
+        <a [routerLink]="[menuItem.path]" [routerLinkActive]="['active']">
+        {{ menuItem.label }}
+      </a>
+      </li>
+    </ul>
+  </nav>
+  <ul class="horizontal" fxFlex="0 0 auto">
+    <li>
+      <button fxLayoutAlign="center" (click)="showUserMenu()">
+      <div fxFlex="1 1 auto" fxFlexAlign="center">{{ username }}</div>
+      <img fxFlex="0 0 auto" src="assets/images/avatar-small.png">
+    </button>
+    </li>
+  </ul>
+</header>
+<main fxLayout="row" fxFlex="1 1 auto">
+  <aside [ngClass]="{ 'hidden': hideAside }">
+  </aside>
+  <router-outlet></router-outlet>
+  <div class="busy-indicator" [ngClass]="{ 'hidden': hideBusyIndicator }">
+    <div class="busy-indicator__spinner"></div>
+  </div>
+</main>
+<footer fxLayout="row" fxFlex="0 0 auto" fxLayoutAlign="center center" fxLayoutGap="5px">
+  <div fxFlex="1 1 auto">copyright 2017</div>
+  <ul class="horizontal">
+    <li><a [routerLink]="['/feedback']">Feedback</a></li>
+    <li><a [routerLink]="['/terms-conditions']">Terms and Conditions</a></li>
+    <li><a [routerLink]="['/privacy-policy']">Privacy Policy</a></li>
+    <li><a [routerLink]="['/about']">About</a></li>
+  </ul>
+</footer>

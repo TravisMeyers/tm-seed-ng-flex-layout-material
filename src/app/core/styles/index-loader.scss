@@ -1,0 +1,30 @@
+/***
+  Index Loader
+ ***/
+@keyframes spin-it {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+.index-loader {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+}
+
+.index-loader__spinner {
+  align-self: center;
+  animation: spin-it 2s linear infinite;
+  border: 4px solid #fff000;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}

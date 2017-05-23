@@ -1,0 +1,98 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "project": {
+    "name": "bh-marketplace-ui"
+  },
+  "apps": [
+    {
+      "root": "src",
+      "outDir": "dist",
+      "assets": [
+        "assets",
+        "favicon.ico"
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "tsconfig.spec.json",
+      "prefix": "app",
+      "styles": [
+        "app/core/styles/styles.scss"
+      ],
+      "scripts": [],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    }
+  ],
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "lint": [
+    {
+      "project": "src/tsconfig.app.json"
+    },
+    {
+      "project": "src/tsconfig.spec.json"
+    },
+    {
+      "project": "e2e/tsconfig.e2e.json"
+    }
+  ],
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  },
+  "defaults": {
+    "class": {
+      "spec": false
+    },
+    "component": {
+      "changeDetection": "Default",
+      "flat": false,
+      "inlineStyle": false,
+      "inlineTemplate": false,
+      "spec": true,
+      "viewEncapsulation": "Emulated"
+    },
+    "directive": {
+      "flat": true,
+      "spec": true
+    },
+    "guard": {
+      "flat": true,
+      "spec": true
+    },
+    "interface": {
+      "prefix": ""
+    },
+    "module": {
+      "flat": false,
+      "spec": false
+    },
+    "pipe": {
+      "flat": true,
+      "spec": true
+    },
+    "poll": 0,
+    "serve": {
+      "host": "localhost",
+      "port": 4200,
+      "ssl": false,
+      "sslCert": "ssl/server.crt",
+      "sslKey": "ssl/server.key"
+    },
+    "service": {
+      "flat": true,
+      "spec": true
+    },
+    "styleExt": "scss"
+  }
+}

@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+@import 'normalize';
+@import 'variables';
+@import 'colors';
+@import './index-loader.scss';
+@import '../../../../node_modules/font-awesome/scss/font-awesome';
+
+*, :before, :after {
+  box-sizing: inherit;
+  outline: 0;
+  user-select: none;
+  cursor: default;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", "Open Sans";
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+
+  // Helps fonts on OSX looks more consistent with other systems.
+  // Isn't currently in button styles due to performance concerns.
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+a {
+  cursor: pointer;
+}
+
+table {
+
+  tbody {
+
+    tr:nth-child(even) {
+      background: map-get($white, white);
+    }
+
+    tr:nth-child(odd) {
+      background: map-get($grey, grey-1);
+    }
+  }
+}
+
+//*************
+// Misc.
+//*************
+
+.hidden {
+  display: none;
+}
