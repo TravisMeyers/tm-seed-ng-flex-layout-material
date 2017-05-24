@@ -1,3 +1,113 @@
 <h2 style="text-align: center;">
   <h1 i18n="User welcome|An introduction header for the app">Welcome to <i>Acme</i>!</h1>
 </h2>
+
+<md-sidenav-container [class.m2app-dark]="isDarkTheme">
+  <md-sidenav #sidenav mode="side" class="app-sidenav">
+    Sidenav
+  </md-sidenav>
+  
+  <md-toolbar color="primary">
+    <button class="app-icon-button" (click)="sidenav.toggle()">
+      <i class="material-icons app-toolbar-menu">menu</i>
+    </button>
+    Angular 2 Material2 Example App
+    <span class="app-toolbar-filler"></span>
+    <button md-button (click)="isDarkTheme = !isDarkTheme">TOGGLE DARK THEME</button>
+  </md-toolbar>
+  
+  <div class="app-content">
+    <md-card>
+      <button md-button>FLAT</button>
+      <button md-raised-button md-tooltip="This is a tooltip!">RAISED</button>
+      <button md-raised-button color="primary">PRIMARY RAISED</button>
+      <button md-raised-button color="accent">ACCENT RAISED</button>
+    </md-card>
+  
+    <md-card>
+      <md-checkbox>Unchecked</md-checkbox>
+      <md-checkbox [checked]="true">Checked</md-checkbox>
+      <md-checkbox [indeterminate]="true">Indeterminate</md-checkbox>
+      <md-checkbox [disabled]="true">Disabled</md-checkbox>
+    </md-card>
+  
+    <md-card>
+      <md-radio-button name="symbol">Alpha</md-radio-button>
+      <md-radio-button name="symbol">Beta</md-radio-button>
+      <md-radio-button name="symbol" disabled>Gamma</md-radio-button>
+    </md-card>
+  
+    <md-card class="app-input-section">
+      <md-input-container>
+        <input mdInput placeholder="First name" />
+      </md-input-container>
+      <md-input-container>
+        <input mdInput #nickname placeholder="Nickname" maxlength="50" />
+        <md-hint align="end">
+          {{ nickname.characterCount }} / 50
+        </md-hint>
+      </md-input-container>
+      <md-input-container>
+        <input mdInput />
+        <md-placeholder>
+          <i class="material-icons app-input-icon">android</i> Favorite phone
+        </md-placeholder>
+      </md-input-container>
+      <md-input-container>
+        <input mdInput placeholder="Motorcycle model" />
+        <span md-prefix>
+          <i class="material-icons app-input-icon">motorcycle</i>
+          &nbsp;
+        </span>
+      </md-input-container>
+    </md-card>
+  
+    <md-card>
+      <md-spinner class="app-spinner"></md-spinner>
+      <md-spinner color="accent" class="app-spinner"></md-spinner>
+    </md-card>
+  
+    <md-card>
+      <label>
+        Indeterminate progress-bar
+        <md-progress-bar
+          class="app-progress"
+          mode="indeterminate"
+          aria-label="Indeterminate progress-bar example"></md-progress-bar>
+      </label>
+      <label>
+        Determinate progress bar - {{ progress }}%
+        <md-progress-bar
+          class="app-progress"
+          color="accent"
+          mode="determinate"
+          [value]="progress"
+          aria-label="Determinate progress-bar example"></md-progress-bar>
+      </label>
+    </md-card>
+  
+    <md-card>
+      <md-tab-group>
+        <md-tab>
+          <ng-template md-tab-label>
+            Earth
+          </ng-template>
+          <ng-template md-tab-content>
+            <p>EARTH</p>
+          </ng-template>
+        </md-tab>
+        <md-tab>
+          <ng-template md-tab-label>
+            Fire
+          </ng-template>
+          <ng-template md-tab-content>
+            <p>FIRE</p>
+          </ng-template>
+        </md-tab>
+      </md-tab-group>
+    </md-card>
+  </div>
+</md-sidenav-container>
+<span class="app-action" [class.m2app-dark]="isDarkTheme">
+  <button md-fab><md-icon>check circle</md-icon></button>
+</span>

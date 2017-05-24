@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 
-import { LoggerService } from 'app/core/shared/services/logger.service';
+import { LoggerService } from '../../shared/services/logger.service';
 
 @Component({
   templateUrl: './dashboard.component.html',
@@ -9,6 +9,11 @@ import { LoggerService } from 'app/core/shared/services/logger.service';
   changeDetection: ChangeDetectionStrategy.Default
 })
 export class DashboardComponent implements OnInit {
+  isDarkTheme = false;
+  nickname = {
+    characterCount: 20,
+  };
+  progress = 56;
 
   constructor(private logger: LoggerService) { }
 

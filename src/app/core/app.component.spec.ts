@@ -3,14 +3,12 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { AppComponent } from './app.component';
 import { LayoutModule } from './layout/layout.module';
-import { SharedModule } from './shared/shared.module';
 
 describe('[Core] AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        SharedModule,
         LayoutModule,
       ],
       declarations: [

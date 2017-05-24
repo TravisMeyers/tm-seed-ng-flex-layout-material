@@ -1,9 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
-@import 'normalize';
-@import 'variables';
-@import 'colors';
-@import './index-loader.scss';
-@import '../../../../node_modules/font-awesome/scss/font-awesome';
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import './index-loader';
+@import './default-theme';
 
 *, :before, :after {
   box-sizing: inherit;
@@ -17,8 +15,6 @@ html {
 }
 
 body {
-  font-family: "Roboto", "Open Sans";
-  font-size: 14px;
   margin: 0;
   padding: 0;
 
@@ -28,30 +24,4 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-}
-
-a {
-  cursor: pointer;
-}
-
-table {
-
-  tbody {
-
-    tr:nth-child(even) {
-      background: map-get($white, white);
-    }
-
-    tr:nth-child(odd) {
-      background: map-get($grey, grey-1);
-    }
-  }
-}
-
-//*************
-// Misc.
-//*************
-
-.hidden {
-  display: none;
 }
