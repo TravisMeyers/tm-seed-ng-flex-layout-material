@@ -11,9 +11,9 @@ import { LoggerService } from '../../shared/services/logger.service';
 export class DashboardComponent implements OnInit {
   isDarkTheme = false;
   nickname = {
-    characterCount: 20,
+    characterCount: 0,
   };
-  progress = 56;
+  progress = 69;
 
   constructor(private logger: LoggerService) { }
 

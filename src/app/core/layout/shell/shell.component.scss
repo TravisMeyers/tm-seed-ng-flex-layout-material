@@ -93,6 +93,7 @@
 
   > main {
     background-color: map-get($white, default);
+    overflow: auto;
     padding-top: 44px; // compensate for the fixed header height.
 
     > aside {
