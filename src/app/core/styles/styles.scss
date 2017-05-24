@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import './index-loader';
-@import './default-theme';
+@import '~@angular/material/theming';
+// @import './default-theme';
 
 *, :before, :after {
   box-sizing: inherit;
@@ -15,6 +16,8 @@ html {
 }
 
 body {
+  font-family: $mat-font-family;
+  font-size: $mat-body-font-size-base;
   margin: 0;
   padding: 0;
 
