@@ -8,6 +8,7 @@
     "build:dev": "ng b --dev",
     "build:prod": "ng b --aot --prod",
     "test": "ng t",
+    "test:i18n": "ng t -sr",
     "test:coverage": "ng t -sr -cc",
     "lint": "ng l --format stylish",
     "e2e": "ng e2e",
