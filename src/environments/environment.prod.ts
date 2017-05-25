@@ -3,5 +3,12 @@
 
 export const environment = {
   production: true,
-  applicationName: 'Acme'
+  environmentName: 'prod',
+  application: {
+    title: 'Acme',
+    logoSource: 'assets/images/acme-logo-yellow.svg',
+  },
+  user: {
+    avatarSource: 'assets/images/avatar-small.png',
+  }
 };
