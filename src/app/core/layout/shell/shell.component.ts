@@ -110,6 +110,7 @@ export class LayoutShellComponent implements OnInit {
 
   private onPrimaryMenuItemsChanged(): void {
     // ToDo: Setup an observer on the primary menu items array.
+    // ToDo: Research appliying i18n.
     this.primaryMenuItems = [
       {
         'label': 'Dashboard',
@@ -120,6 +121,7 @@ export class LayoutShellComponent implements OnInit {
 
   private onFooterLinksChanged() {
     // ToDo: Setup an observer on the primary menu items array.
+    // ToDo: Research appliying i18n.
     this.footerLinks = [
       {
         'label': 'About',
@@ -142,6 +144,7 @@ export class LayoutShellComponent implements OnInit {
 
   private onUserInfoChanged(): void {
     // ToDo: Subscribe to a user info observable (user service/store).
+    // ToDo: Research appliying i18n?
     this.username = 'Alexander Meyers';
   }
 }
