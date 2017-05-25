@@ -2,12 +2,12 @@ import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy } from '@
 import { Title } from '@angular/platform-browser';
 import { Router, NavigationEnd, NavigationStart, ActivatedRoute } from '@angular/router';
 
-import { distinctUntilChanged } from 'rxjs/operator/distinctUntilChanged';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 
-import { LoggerService } from 'app/core/shared/services/logger.service';
+import { environment } from './../../../../environments/environment';
+import { LoggerService } from '../../shared/services/logger.service';
 
 @Component({
   selector: 'app-layout-shell',
@@ -17,9 +17,14 @@ import { LoggerService } from 'app/core/shared/services/logger.service';
   changeDetection: ChangeDetectionStrategy.Default
 })
 export class LayoutShellComponent implements OnInit {
+  applicationTitle: string;
+  logoSrc: string;
+  userAvatarSource: string;
   hideBusyIndicator: boolean;
   hideAside: boolean; // ToDo: convert to be a secondary route outlet or side menu?
   primaryMenuItems: any[];
+  footerLinks: any[];
+  copyrightYear: number;
   username: string;
   version: string;
 
@@ -30,24 +35,19 @@ export class LayoutShellComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.applicationTitle = environment.application.title;
+    this.logoSrc = environment.application.logoSource;
+    this.userAvatarSource = environment.user.avatarSource;
     this.hideBusyIndicator = true;
     this.hideAside = true;
+    this.copyrightYear = new Date().getFullYear();
     // ToDo: Move observers into a shell service, backed by a store.
-    this.onNavigationStart();
+    // this.onNavigationStart();
     this.onNavigationEnd();
     this.onPrimaryMenuItemsChanged();
     this.onUserInfoChanged();
-    this.onFooterInfoChanged();
+    this.onFooterLinksChanged();
     this.logger.log('[Layout.LayoutShellComponent] Initialized!', this);
-  }
-
-  showUserMenu() {
-    this.router.navigate(['/user']);
-  }
-
-  private onFooterInfoChanged(): void {
-    // ToDo: Subscribe to a footer info observable (footer service/store).
-    this.version = 'v1.0.8.2001';
   }
 
   private onNavigationEnd(): void {
@@ -70,10 +70,6 @@ export class LayoutShellComponent implements OnInit {
         while (route.firstChild) { route = route.firstChild; }
         return route;
       })
-      // Filter for primary route outlets.
-      // .filter(route => route.outlet === 'primary')
-      // Only change the title if the new value is distinct.
-      // .distinctUntilChanged()
       // Send only the route data.
       .mergeMap(route => route.data)
       .subscribe((data) => {
@@ -81,7 +77,7 @@ export class LayoutShellComponent implements OnInit {
         this.hideBusyIndicator = true;
         // Set the browser title using the platform browser title service.
         const currentTitle = this.titleService.getTitle();
-        const title = `Acme : ${data['title']}`;
+        const title = `${environment.application.title} : ${data['title']}`;
         if (title !== currentTitle) {
           this.titleService.setTitle(title);
           this.logger.log('[Layout.LayoutShellComponent] onNavigationEnd called!', { data });
@@ -95,6 +91,8 @@ export class LayoutShellComponent implements OnInit {
     /* Subscribe to the router's events observable,
      * so the following will run after every route start:
      *  hide the busy indictor (All backend access is during route data resolving).
+     *
+     *  ToDo: Implment a material busy indicator.
      */
     this.router.events
       // Filter for the navigation start event.
@@ -116,6 +114,28 @@ export class LayoutShellComponent implements OnInit {
       {
         'label': 'Dashboard',
         'path': '/dashboard',
+      },
+    ];
+  }
+
+  private onFooterLinksChanged() {
+    // ToDo: Setup an observer on the primary menu items array.
+    this.footerLinks = [
+      {
+        'label': 'About',
+        'path': '/about',
+      },
+      {
+        'label': 'Feedback',
+        'path': '/feedback',
+      },
+      {
+        'label': 'Privacy Policy',
+        'path': '/privacy-policy',
+      },
+      {
+        'label': 'Terms & Conditions',
+        'path': '/terms-conditions',
       },
     ];
   }

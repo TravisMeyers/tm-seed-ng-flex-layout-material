@@ -1,37 +1,46 @@
-<header fxLayout="row" fxFlex="0 0 auto" fxLayoutAlign="center center" fxLayoutGap="15px">
-  <img fxFlex="0 0 auto" i18n-title="App logo title" title="Acme" src="assets/images/acme-logo-yellow.svg" (click)="hideAside = !hideAside" />
-  <nav fxFlex="2 2 auto">
-    <ul class="horizontal">
-      <li *ngFor="let menuItem of primaryMenuItems; let idx = index">
-        <a [routerLink]="[menuItem.path]" [routerLinkActive]="['active']">
+<header>
+  <md-toolbar color="primary">
+    <img title="{{ applicationTitle }}" src="{{ logoSrc }}" />
+    <md-toolbar color="primary">
+      <a md-button *ngFor="let menuItem of primaryMenuItems"
+        [routerLink]="[menuItem.path]"
+        [routerLinkActive]="['active']">
         {{ menuItem.label }}
       </a>
-      </li>
-    </ul>
-  </nav>
-  <ul class="horizontal" fxFlex="0 0 auto">
-    <li>
-      <button fxLayoutAlign="center" (click)="showUserMenu()">
-      <div fxFlex="1 1 auto" fxFlexAlign="center">{{ username }}</div>
-      <img fxFlex="0 0 auto" src="assets/images/avatar-small.png">
+    </md-toolbar>
+    <button
+      class="user-menu-button"
+      md-button
+      style="min-width: auto; height: inherit;"
+      [mdMenuTriggerFor]="userMenu">
+      {{ username | uppercase }}
+      <img class="user-avatar" src="{{ userAvatarSource }}">
     </button>
-    </li>
-  </ul>
+  </md-toolbar>
+  <md-menu #userMenu="mdMenu" xPosition="before" [overlapTrigger]="false">
+    <!-- ToDo: Create this dynamically? -->
+    <a md-menu-item [routerLink]="['/user']">
+      <md-icon>settings</md-icon>
+      <span>Settings</span>
+    </a>
+    <a md-menu-item [routerLink]="['/logout']">
+      <md-icon>input</md-icon>
+      <span>Logout</span>
+    </a>
+  </md-menu>
 </header>
-<main fxLayout="row" fxFlex="1 1 auto">
-  <aside [ngClass]="{ 'hidden': hideAside }">
-  </aside>
+
+<main fxFlex="1 1 auto">
   <router-outlet></router-outlet>
-  <div class="busy-indicator" [ngClass]="{ 'hidden': hideBusyIndicator }">
-    <div class="busy-indicator__spinner"></div>
-  </div>
 </main>
-<footer fxLayout="row" fxFlex="0 0 auto" fxLayoutAlign="center center" fxLayoutGap="5px">
-  <div fxFlex="1 1 auto">copyright 2017</div>
-  <ul class="horizontal">
-    <li><a [routerLink]="['/feedback']">Feedback</a></li>
-    <li><a [routerLink]="['/terms-conditions']">Terms and Conditions</a></li>
-    <li><a [routerLink]="['/privacy-policy']">Privacy Policy</a></li>
-    <li><a [routerLink]="['/about']">About</a></li>
-  </ul>
+
+<footer>
+  <md-toolbar color="accent">
+    <span>© {{ copyrightYear }} {{ applicationTitle }}</span>
+    <span fxFlex="1 1 auto"></span>
+    <a md-button *ngFor="let link of footerLinks"
+      [routerLink]="[link.path]">
+      {{ link.label }}
+    </a>
+  </md-toolbar>
 </footer>
