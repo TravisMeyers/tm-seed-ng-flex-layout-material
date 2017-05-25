@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { SelectiveStrategy } from './selective-strategy.service';
 import { PageNotFoundComponent } from '../layout/page-not-found/page-not-found.component';
+import { SelectiveStrategy } from './selective-strategy.service';
 
 const routes: Routes = [
   // ToDo: Get list of modules that we want to lazy-load at build/deploy/run time?
