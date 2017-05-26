@@ -4,6 +4,10 @@
 @import './index-loader';
 @import './default-theme';
 
+*, :before, :after {
+  user-select: none;
+}
+
 body {
   font-family: $mat-font-family;
   margin: 0;
