@@ -1,11 +1,10 @@
 @import '~@angular/material/theming';
 
 :host {
-  flex: 1;
 
-  .simple-grid > md-card {
+  .simple-grid md-card {
     border-radius: 5px;
-    width: 40vw;
+    min-width: 40vw;
   }
 
   > div {

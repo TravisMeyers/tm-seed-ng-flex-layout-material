@@ -4,8 +4,8 @@
   </h1>
 </h2>
 
-<div class="simple-grid" fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-between">
-  <md-card fxFlex="1 1 auto">
+<div class="simple-grid" fxLayout fxLayoutGap="20px" fxLayoutAlign="space-around">
+  <md-card>
     <md-card-title>Snack Bar</md-card-title>
     <md-card-subtitle>Send a message</md-card-subtitle>
     <md-card-content>
@@ -21,7 +21,7 @@
     </md-card-actions>
   </md-card>
 
-  <md-card fxFlex="1 1 auto">
+  <md-card>
     <md-card-title>Title</md-card-title>
     <md-card-subtitle>Subtitle</md-card-subtitle>
     <md-card-content>
@@ -30,7 +30,7 @@
   </md-card>
 </div>
 
-<div>
+<div class="card-grid-list">
   <md-grid-list cols="4" rowHeight="2:1" fxLayoutGap="20px">
     <md-grid-tile *ngFor="let tile of tiles" colspan="2">
       <md-card>
