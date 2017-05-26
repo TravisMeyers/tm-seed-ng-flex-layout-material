@@ -30,6 +30,11 @@
     > md-sidenav-container {
       overflow: auto;
       padding: 0 15px;
+      padding-bottom: 40px;
+
+      md-sidenav {
+        margin-left: -15px;
+      }
     }
   }
 
