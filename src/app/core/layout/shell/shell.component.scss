@@ -10,6 +10,7 @@
   header {
 
     img {
+      cursor: pointer;
       height: 37px;
     }
 
@@ -21,6 +22,10 @@
 
   > main {
     overflow: auto;
+
+    md-nav-list > a {
+      outline-style: none;
+    }
   }
 
   > footer span:first-child {

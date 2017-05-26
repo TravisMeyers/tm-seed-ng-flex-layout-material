@@ -20,13 +20,10 @@ export class LayoutShellComponent implements OnInit {
   applicationTitle: string;
   logoSrc: string;
   userAvatarSource: string;
-  hideBusyIndicator: boolean;
-  hideAside: boolean; // ToDo: convert to be a secondary route outlet or side menu?
   primaryMenuItems: any[];
   footerLinks: any[];
-  copyrightYear: number;
+  currentYear: number;
   username: string;
-  version: string;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -38,11 +35,8 @@ export class LayoutShellComponent implements OnInit {
     this.applicationTitle = environment.application.title;
     this.logoSrc = environment.application.logoSource;
     this.userAvatarSource = environment.user.avatarSource;
-    this.hideBusyIndicator = true;
-    this.hideAside = true;
-    this.copyrightYear = new Date().getFullYear();
+    this.currentYear = new Date().getFullYear();
     // ToDo: Move observers into a shell service, backed by a store.
-    // this.onNavigationStart();
     this.onNavigationEnd();
     this.onPrimaryMenuItemsChanged();
     this.onUserInfoChanged();
@@ -73,15 +67,15 @@ export class LayoutShellComponent implements OnInit {
       // Send only the route data.
       .mergeMap(route => route.data)
       .subscribe((data) => {
-        // Hide busy indicator.
-        this.hideBusyIndicator = true;
+        this.logger.log('[Layout.LayoutShellComponent] onNavigationEnd called!', { data });
         // Set the browser title using the platform browser title service.
         const currentTitle = this.titleService.getTitle();
         const title = `${environment.application.title} : ${data['title']}`;
         if (title !== currentTitle) {
           this.titleService.setTitle(title);
-          this.logger.log('[Layout.LayoutShellComponent] onNavigationEnd called!', { data });
+          this.logger.log('[Layout.LayoutShellComponent] Title set!', { title });
         }
+        // ToDo: Hide the material busy indicator.
       });
   }
 
@@ -90,9 +84,7 @@ export class LayoutShellComponent implements OnInit {
     // e.g. routerHelper.activeRoute.onNavigationStart():Observable<ActivatedRoute>.
     /* Subscribe to the router's events observable,
      * so the following will run after every route start:
-     *  hide the busy indictor (All backend access is during route data resolving).
-     *
-     *  ToDo: Implment a material busy indicator.
+     *   hide the busy indictor
      */
     this.router.events
       // Filter for the navigation start event.
@@ -102,8 +94,7 @@ export class LayoutShellComponent implements OnInit {
       // Filter for primary route outlets.
       .filter(route => route.outlet === 'primary')
       .subscribe((route) => {
-        // hide busy indicator.
-        this.hideBusyIndicator = false;
+        // ToDo: Show the material busy indicator.
         this.logger.log('[Layout.LayoutShellComponent] onNavigationStart called!', { route });
       });
   }
