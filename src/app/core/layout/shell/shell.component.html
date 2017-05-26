@@ -1,3 +1,7 @@
+<div [hidden]="!isBusy">
+  <md-progress-bar mode="indeterminate" color="primary"></md-progress-bar>
+</div>
+
 <header class="mat-elevation-z6">
   <md-toolbar color="accent">
     <img title="{{ applicationTitle }}" src="{{ logoSrc }}" (click)="sidenav.toggle()" />
