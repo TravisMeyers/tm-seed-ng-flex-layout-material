@@ -2,12 +2,13 @@
 
 :host {
 
-  .simple-grid md-card {
-    border-radius: 5px;
-    min-width: 40vw;
-  }
+  .simple-grid {
 
-  > div {
-    padding: 10px 0;
+    md-card {
+      border-radius: 5px;
+      width: 400px;
+      min-height: 150px;
+      margin: 5px 10px;
+    }
   }
 }
