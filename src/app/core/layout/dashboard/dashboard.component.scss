@@ -2,6 +2,10 @@
 
 :host {
 
+  > h1:first-child {
+    text-align: center;
+  }
+
   .simple-grid {
 
     md-card {
