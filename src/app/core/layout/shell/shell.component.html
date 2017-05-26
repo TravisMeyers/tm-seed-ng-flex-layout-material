@@ -1,7 +1,7 @@
-<header>
-  <md-toolbar color="primary">
+<header class="mat-elevation-z6">
+  <md-toolbar color="accent">
     <img title="{{ applicationTitle }}" src="{{ logoSrc }}" (click)="sidenav.toggle()" />
-    <md-toolbar color="primary">
+    <md-toolbar color="accent">
       <a md-button *ngFor="let menuItem of primaryMenuItems"
         [routerLink]="[menuItem.path]"
         [routerLinkActive]="['active']">
