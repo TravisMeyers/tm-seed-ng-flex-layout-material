@@ -17,13 +17,14 @@ import { LoggerService } from '../../shared/services/logger.service';
   changeDetection: ChangeDetectionStrategy.Default
 })
 export class LayoutShellComponent implements OnInit {
+  isBusy: boolean;
   applicationTitle: string;
   logoSrc: string;
+  username: string;
   userAvatarSource: string;
   primaryMenuItems: any[];
-  footerLinks: any[];
   currentYear: number;
-  username: string;
+  footerLinks: any[];
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -32,6 +33,7 @@ export class LayoutShellComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.isBusy = false;
     this.applicationTitle = environment.application.title;
     this.logoSrc = environment.application.logoSource;
     this.userAvatarSource = environment.user.avatarSource;
@@ -75,7 +77,7 @@ export class LayoutShellComponent implements OnInit {
           this.titleService.setTitle(title);
           this.logger.log('[Layout.LayoutShellComponent] Title set!', { title });
         }
-        // ToDo: Hide the material busy indicator.
+        this.isBusy = false;
       });
   }
 
@@ -94,7 +96,7 @@ export class LayoutShellComponent implements OnInit {
       // Filter for primary route outlets.
       .filter(route => route.outlet === 'primary')
       .subscribe((route) => {
-        // ToDo: Show the material busy indicator.
+        this.isBusy = true;
         this.logger.log('[Layout.LayoutShellComponent] onNavigationStart called!', { route });
       });
   }
