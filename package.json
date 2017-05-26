@@ -7,14 +7,13 @@
     "build": "ng build",
     "build:dev": "ng b --dev",
     "build:prod": "ng b --aot --prod",
+    "build:publish:gh": "ng build -prod -sm -ec -bh /tm-seed-ng-flex-layout-material/ && gh-pages -d dist",
     "test": "ng test",
-    "test:i18n": "ng t -sr",
     "test:coverage": "ng t -sr -cc",
     "lint": "ng lint --format stylish",
     "e2e": "ng e2e",
     "i18n": "ng xi18n",
-    "i18n:extract": "ng xi18n --i18nFormat=xlf --output-path src/locale --progress",
-    "deploy:gh": "ng build -prod -sm -ec -bh /tm-seed-ng-flex-layout-material/ && gh-pages -d dist"
+    "i18n:extract": "ng xi18n --i18nFormat=xlf --output-path src/locale --progress"
   },
   "private": true,
   "dependencies": {
