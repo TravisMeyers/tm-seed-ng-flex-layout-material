@@ -3,3 +3,37 @@
     Welcome to <i>{{ applicationTitle }}</i>!
   </h1>
 </h2>
+
+<div class="simple-grid" fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-between">
+  <md-card>
+    <md-card-title>Snack Bar</md-card-title>
+    <md-card-subtitle>Send a message</md-card-subtitle>
+    <md-card-content>
+      <md-input-container>
+        <input mdInput value="Hey there!" placeholder="Message" #message>
+      </md-input-container>
+      <md-input-container>
+        <input mdInput value="Do it!" placeholder="Action" #action>
+      </md-input-container>
+    </md-card-content>
+    <md-card-actions align="end">
+      <button md-button (click)="openSnackBar(message.value, action.value)">Send</button>
+    </md-card-actions>
+  </md-card>
+
+  <md-card>
+    <md-card-title>Snack Bar</md-card-title>
+    <md-card-subtitle>Send a message</md-card-subtitle>
+    <md-card-content>
+      <md-input-container>
+        <input mdInput value="Hey there!" placeholder="Message" #message>
+      </md-input-container>
+      <md-input-container>
+        <input mdInput value="Do it!" placeholder="Action" #action>
+      </md-input-container>
+    </md-card-content>
+    <md-card-actions align="end">
+      <button md-button (click)="openSnackBar(message.value, action.value)">Send</button>
+    </md-card-actions>
+  </md-card> 
+</div>

@@ -2,4 +2,9 @@
 
 :host {
   flex: 1;
+
+  .simple-grid > md-card {
+    border-radius: 5px;
+    min-width: 40vw;
+  }
 }
