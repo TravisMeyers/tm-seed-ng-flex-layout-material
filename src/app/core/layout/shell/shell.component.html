@@ -1,7 +1,7 @@
-<header>
-  <md-toolbar color="primary">
-    <img title="{{ applicationTitle }}" src="{{ logoSrc }}" />
-    <md-toolbar color="primary">
+<header class="mat-elevation-z6">
+  <md-toolbar color="accent">
+    <img title="{{ applicationTitle }}" src="{{ logoSrc }}" (click)="sidenav.toggle()" />
+    <md-toolbar color="accent">
       <a md-button *ngFor="let menuItem of primaryMenuItems"
         [routerLink]="[menuItem.path]"
         [routerLinkActive]="['active']">
@@ -30,13 +30,28 @@
   </md-menu>
 </header>
 
-<main fxFlex="1 1 auto">
-  <router-outlet></router-outlet>
+<main fxFlex="1 1 auto" fxLayout="column">
+  <md-sidenav-container fxFlex="1">
+    <md-sidenav #sidenav>
+      <md-nav-list>
+        <a md-list-item *ngFor="let link of footerLinks"
+          [routerLink]="[link.path]"
+          (click)="sidenav.toggle()">
+          {{ link.label }}
+        </a>
+      </md-nav-list>
+    </md-sidenav>
+    <router-outlet></router-outlet>
+  </md-sidenav-container>
 </main>
 
 <footer>
   <md-toolbar color="accent">
-    <span>© {{ copyrightYear }} {{ applicationTitle }}</span>
+    <span>
+      <a md-button href="https://github.com/TravisMeyers" target="_blank">
+        Copyright © {{ currentYear }} TravisMeyers
+      </a>
+    </span>
     <span fxFlex="1 1 auto"></span>
     <a md-button *ngFor="let link of footerLinks"
       [routerLink]="[link.path]">
