@@ -1,5 +1,13 @@
 @import '~@angular/material/theming';
 
 :host {
-  flex: 1;
+
+  .simple-grid md-card {
+    border-radius: 5px;
+    min-width: 40vw;
+  }
+
+  > div {
+    padding: 10px 0;
+  }
 }
