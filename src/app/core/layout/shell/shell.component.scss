@@ -26,6 +26,11 @@
     md-nav-list > a {
       outline-style: none;
     }
+
+    > md-sidenav-container {
+      overflow: auto;
+      padding: 0 15px;
+    }
   }
 
   > footer span:first-child {
