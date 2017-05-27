@@ -1,5 +1,7 @@
 # My Seed Project
 
+https://travis-ci.org/TravisMeyers/tm-seed-ng-flex-layout-material.svg?branch=development
+
 Coming soon...
 
 ## PreReqs
