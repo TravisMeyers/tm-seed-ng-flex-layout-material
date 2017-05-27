@@ -1,5 +1,7 @@
 # My Seed Project
 
+[![Build Status](https://travis-ci.org/TravisMeyers/tm-seed-ng-flex-layout-material.svg?branch=development)](https://travis-ci.org/TravisMeyers/tm-seed-ng-flex-layout-material)
+
 Coming soon...
 
 ## PreReqs
