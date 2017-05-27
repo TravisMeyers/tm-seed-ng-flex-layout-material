@@ -1,34 +1,26 @@
-<div class="progress-bar" [hidden]="!isBusy">
-  <md-progress-bar mode="indeterminate" color="primary"></md-progress-bar>
-</div>
-
 <md-sidenav-container fxLayout="column">
-  <header>
+  <md-progress-bar mode="indeterminate" color="primary" [hidden]="!isBusy"></md-progress-bar>
+
+  <header class="mat-elevelation-z6">
     <md-toolbar color="accent">
-      <span>
-        <button md-icon-button (click)="sidenav.toggle()" color="primary">
-          <md-icon>menu</md-icon>
-        </button>      
-      </span>
+      <button class="menu-icon" md-icon-button (click)="sidenav.toggle()" color="primary">
+        <md-icon>menu</md-icon>
+      </button>
       <img alt="{{ applicationTitle }}" src="{{ logoSrc }}" />
-      <md-toolbar color="accent">
+      <md-toolbar class="action-bar" color="accent">
         <a md-button *ngFor="let menuItem of primaryMenuItems"
           [routerLink]="[menuItem.path]"
           [routerLinkActive]="['active']">
-          {{ menuItem.label }}
+          {{ menuItem.label | uppercase }}
         </a>
+        <span fxFlex="1 1 auto"></span>
+        <button md-button [mdMenuTriggerFor]="userMenu">
+          {{ username | uppercase }}
+          <img class="user-avatar" src="{{ userAvatarSource }}">
+        </button>
       </md-toolbar>
-      <button
-        class="user-menu-button"
-        md-button
-        style="min-width: auto; height: inherit;"
-        [mdMenuTriggerFor]="userMenu">
-        {{ username | uppercase }}
-        <img class="user-avatar" src="{{ userAvatarSource }}">
-      </button>
     </md-toolbar>
     <md-menu #userMenu="mdMenu" xPosition="before" [overlapTrigger]="false">
-      <!-- ToDo: Create this dynamically? -->
       <a md-menu-item [routerLink]="['/user']">
         <md-icon>settings</md-icon>
         <span>Settings</span>
@@ -42,7 +34,7 @@
 
   <md-sidenav #sidenav fxLayout="column">
     <md-toolbar color="primary">
-      <span>Sidenav Header</span>
+      <span>I'm a sidenav!</span>
     </md-toolbar>
     <md-nav-list fxFlex="1 1 auto">
       <a md-list-item *ngFor="let menuItem of primaryMenuItems"
@@ -68,12 +60,11 @@
 
   <footer>
     <md-toolbar color="accent">
-      <span>
+      <span class="footer-text" fxFlex="1 1 auto">
         <a md-button href="https://github.com/TravisMeyers" target="_blank">
           Copyright © {{ currentYear }} TravisMeyers
         </a>
       </span>
-      <span fxFlex="1 1 auto"></span>
       <a md-button *ngFor="let link of footerLinks"
         [routerLink]="[link.path]">
         {{ link.label }}

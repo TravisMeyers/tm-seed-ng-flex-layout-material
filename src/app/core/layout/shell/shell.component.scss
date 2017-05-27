@@ -10,11 +10,6 @@
   > md-sidenav-container {
     height: 100vh;
 
-    /deep/ div.mat-sidenav-content {
-      display: flex;
-      flex-direction: column;
-    }
-
     > md-sidenav {
       min-width: 25vw;
 
@@ -22,39 +17,63 @@
         outline-style: none;
       }
     }
+
+    /deep/ div.mat-sidenav-content {
+      display: flex;
+      flex-direction: column;
+
+      > md-progress-bar {
+        position: absolute;
+        width: 100%;
+        display: none; // ToDo: Figure out the right way of hiding and showing it.
+      }
    
-    header {
+      > header {
+        .menu-icon {
+          margin-right: 10px;
+        }
 
-      span:first-child {
-        margin-right: 10px;
+        img {
+          height: 37px;
+        }
+
+        md-toolbar.action-bar {
+          padding-right: 0;
+
+          md-toolbar-row {
+            button:last-child {
+              min-width: auto;
+              height: inherit;
+            
+              .user-avatar {
+                border-radius: 35px;
+                margin-left: 5px;
+              }
+            }
+          }
+        }
       }
 
-      img {
-        height: 37px;
+      > main {
+        overflow: auto;
+        flex: 1;
+
+        > :last-child {
+          height: calc(100vh- 64px);
+        }
       }
 
-      .user-avatar {
-        border-radius: 35px;
-        margin-left: 5px;
+      > footer {
+        .footer-text {
+          cursor: default;
+          font-size: 14px;
+          user-select: none;
+        }
       }
     }
+  }
 
-    main {
-      overflow: auto;
-      flex: 1;
-
-      > :last-child {
-        height: calc(100vh- 64px);
-      }
-    }
-
-    footer {
-
-      span:first-child {
-        cursor: default;
-        font-size: 14px;
-        user-select: none;
-      }
-    }
+  .active {
+    font-weight: 700;
   }
 }
