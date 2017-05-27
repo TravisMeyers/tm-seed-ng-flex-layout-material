@@ -2,7 +2,13 @@ sudo: required
 dist: trusty
 language: node_js
 node_js:
-  - 6.9
+  - "6"
+branches:
+  only:
+    - master
+cache:
+  directories:
+    - node_modules
 addons:
 apt:
   sources:
@@ -19,6 +25,11 @@ install:
 script:
   - npm run test:coverage
   - npm run lint
-  - build:publish:gh
+  - build:gh
 deploy:
+  provider: pages
+  skip_cleanup: true
   github_token: $GITHUB_TOKEN
+  local_dir: dist
+  on:
+    branch: development
