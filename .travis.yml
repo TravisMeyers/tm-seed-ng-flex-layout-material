@@ -20,3 +20,5 @@ script:
   - npm run test:coverage
   - npm run lint
   - build:publish:gh
+deploy:
+  github_token: $GITHUB_TOKEN
