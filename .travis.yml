@@ -23,9 +23,9 @@ before_install:
 install:
   - npm install
 script:
-  - npm run test:coverage
   - npm run lint
-  - build:gh
+  - npm run test:coverage
+  - npm run build:gh
 deploy:
   provider: pages
   skip_cleanup: true
