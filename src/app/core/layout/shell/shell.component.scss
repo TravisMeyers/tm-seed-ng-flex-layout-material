@@ -10,19 +10,17 @@
   > md-sidenav-container {
     height: 100vh;
 
+    /deep/ div.mat-sidenav-content {
+      display: flex;
+      flex-direction: column;
+    }
+
     > md-sidenav {
       min-width: 25vw;
 
       > md-nav-list > a {
         outline-style: none;
       }
-    }
-
-    .content-container {
-      max-width: inherit;
-      // min-height: 93.5vh;
-      overflow: auto;
-      flex: 1;
     }
    
     header {
@@ -43,6 +41,11 @@
 
     main {
       overflow: auto;
+      flex: 1;
+
+      > :last-child {
+        height: calc(100vh- 64px);
+      }
     }
 
     footer {

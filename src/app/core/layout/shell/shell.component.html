@@ -3,14 +3,14 @@
 </div>
 
 <md-sidenav-container fxLayout="column">
-  <header class="mat-elevation-z6">
+  <header>
     <md-toolbar color="accent">
       <span>
-        <button md-icon-button (click)="sidenav.toggle()">
+        <button md-icon-button (click)="sidenav.toggle()" color="primary">
           <md-icon>menu</md-icon>
         </button>      
       </span>
-      <img title="{{ applicationTitle }}" src="{{ logoSrc }}" />
+      <img alt="{{ applicationTitle }}" src="{{ logoSrc }}" />
       <md-toolbar color="accent">
         <a md-button *ngFor="let menuItem of primaryMenuItems"
           [routerLink]="[menuItem.path]"
@@ -41,9 +41,8 @@
   </header>
 
   <md-sidenav #sidenav fxLayout="column">
-    <md-toolbar color="accent">
-      <md-icon></md-icon>
-      <span>Side Nav</span>
+    <md-toolbar color="primary">
+      <span>Sidenav Header</span>
     </md-toolbar>
     <md-nav-list fxFlex="1 1 auto">
       <a md-list-item *ngFor="let menuItem of primaryMenuItems"
@@ -63,9 +62,9 @@
     </md-nav-list>
   </md-sidenav>
 
-  <div class="content-container" fxLayout="column">
+  <main fxLayout="column">
     <router-outlet></router-outlet>
-  </div>
+  </main>
 
   <footer>
     <md-toolbar color="accent">
