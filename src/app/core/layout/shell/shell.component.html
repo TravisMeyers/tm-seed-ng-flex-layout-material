@@ -1,65 +1,84 @@
-<div [hidden]="!isBusy">
+<div class="progress-bar" [hidden]="!isBusy">
   <md-progress-bar mode="indeterminate" color="primary"></md-progress-bar>
 </div>
 
-<header class="mat-elevation-z6">
-  <md-toolbar color="accent">
-    <img title="{{ applicationTitle }}" src="{{ logoSrc }}" (click)="sidenav.toggle()" />
+<md-sidenav-container fxLayout="column">
+  <header class="mat-elevation-z6">
     <md-toolbar color="accent">
-      <a md-button *ngFor="let menuItem of primaryMenuItems"
+      <span>
+        <button md-icon-button (click)="sidenav.toggle()">
+          <md-icon>menu</md-icon>
+        </button>      
+      </span>
+      <img title="{{ applicationTitle }}" src="{{ logoSrc }}" />
+      <md-toolbar color="accent">
+        <a md-button *ngFor="let menuItem of primaryMenuItems"
+          [routerLink]="[menuItem.path]"
+          [routerLinkActive]="['active']">
+          {{ menuItem.label }}
+        </a>
+      </md-toolbar>
+      <button
+        class="user-menu-button"
+        md-button
+        style="min-width: auto; height: inherit;"
+        [mdMenuTriggerFor]="userMenu">
+        {{ username | uppercase }}
+        <img class="user-avatar" src="{{ userAvatarSource }}">
+      </button>
+    </md-toolbar>
+    <md-menu #userMenu="mdMenu" xPosition="before" [overlapTrigger]="false">
+      <!-- ToDo: Create this dynamically? -->
+      <a md-menu-item [routerLink]="['/user']">
+        <md-icon>settings</md-icon>
+        <span>Settings</span>
+      </a>
+      <a md-menu-item [routerLink]="['/logout']">
+        <md-icon>input</md-icon>
+        <span>Logout</span>
+      </a>
+    </md-menu>
+  </header>
+
+  <md-sidenav #sidenav fxLayout="column">
+    <md-toolbar color="accent">
+      <md-icon></md-icon>
+      <span>Side Nav</span>
+    </md-toolbar>
+    <md-nav-list fxFlex="1 1 auto">
+      <a md-list-item *ngFor="let menuItem of primaryMenuItems"
         [routerLink]="[menuItem.path]"
-        [routerLinkActive]="['active']">
+        [routerLinkActive]="['active']"
+        (click)="sidenav.toggle()">
         {{ menuItem.label }}
       </a>
-    </md-toolbar>
-    <button
-      class="user-menu-button"
-      md-button
-      style="min-width: auto; height: inherit;"
-      [mdMenuTriggerFor]="userMenu">
-      {{ username | uppercase }}
-      <img class="user-avatar" src="{{ userAvatarSource }}">
-    </button>
-  </md-toolbar>
-  <md-menu #userMenu="mdMenu" xPosition="before" [overlapTrigger]="false">
-    <!-- ToDo: Create this dynamically? -->
-    <a md-menu-item [routerLink]="['/user']">
-      <md-icon>settings</md-icon>
-      <span>Settings</span>
-    </a>
-    <a md-menu-item [routerLink]="['/logout']">
-      <md-icon>input</md-icon>
-      <span>Logout</span>
-    </a>
-  </md-menu>
-</header>
-
-<main fxFlex="1 1 auto" fxLayout="column">
-  <md-sidenav-container fxFlex="1">
-    <md-sidenav #sidenav>
-      <md-nav-list>
-        <a md-list-item *ngFor="let link of footerLinks"
-          [routerLink]="[link.path]"
-          (click)="sidenav.toggle()">
-          {{ link.label }}
-        </a>
-      </md-nav-list>
-    </md-sidenav>
-    <router-outlet></router-outlet>
-  </md-sidenav-container>
-</main>
-
-<footer>
-  <md-toolbar color="accent">
-    <span>
-      <a md-button href="https://github.com/TravisMeyers" target="_blank">
-        Copyright © {{ currentYear }} TravisMeyers
+    </md-nav-list>
+    <md-nav-list>
+      <a md-list-item *ngFor="let link of footerLinks"
+        [routerLink]="[link.path]"
+        [routerLinkActive]="['active']"
+        (click)="sidenav.toggle()">
+        {{ link.label }}
       </a>
-    </span>
-    <span fxFlex="1 1 auto"></span>
-    <a md-button *ngFor="let link of footerLinks"
-      [routerLink]="[link.path]">
-      {{ link.label }}
-    </a>
-  </md-toolbar>
-</footer>
+    </md-nav-list>
+  </md-sidenav>
+
+  <div class="content-container" fxLayout="column">
+    <router-outlet></router-outlet>
+  </div>
+
+  <footer>
+    <md-toolbar color="accent">
+      <span>
+        <a md-button href="https://github.com/TravisMeyers" target="_blank">
+          Copyright © {{ currentYear }} TravisMeyers
+        </a>
+      </span>
+      <span fxFlex="1 1 auto"></span>
+      <a md-button *ngFor="let link of footerLinks"
+        [routerLink]="[link.path]">
+        {{ link.label }}
+      </a>
+    </md-toolbar>
+  </footer>
+</md-sidenav-container>
