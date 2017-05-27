@@ -7,41 +7,54 @@
   align-items: stretch;
   align-content: stretch;
 
-  header {
+  > md-sidenav-container {
+    height: 100vh;
 
-    img {
-      cursor: pointer;
-      height: 37px;
+    /deep/ div.mat-sidenav-content {
+      display: flex;
+      flex-direction: column;
     }
 
-    .user-avatar {
-      border-radius: 35px;
-      margin-left: 5px;
-    }
-  }
+    > md-sidenav {
+      min-width: 25vw;
 
-  > main {
-    overflow: auto;
-
-    md-nav-list > a {
-      outline-style: none;
-    }
-
-    > md-sidenav-container {
-      overflow: auto;
-      padding: 0 15px;
-      padding-bottom: 40px;
-
-      md-sidenav {
-        margin-left: -15px;
-        min-width: 250px;
+      > md-nav-list > a {
+        outline-style: none;
       }
     }
-  }
+   
+    header {
 
-  > footer span:first-child {
-    cursor: default;
-    font-size: 14px;
-    user-select: none;
+      span:first-child {
+        margin-right: 10px;
+      }
+
+      img {
+        height: 37px;
+      }
+
+      .user-avatar {
+        border-radius: 35px;
+        margin-left: 5px;
+      }
+    }
+
+    main {
+      overflow: auto;
+      flex: 1;
+
+      > :last-child {
+        height: calc(100vh- 64px);
+      }
+    }
+
+    footer {
+
+      span:first-child {
+        cursor: default;
+        font-size: 14px;
+        user-select: none;
+      }
+    }
   }
 }
